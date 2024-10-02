@@ -32,28 +32,15 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<string>("light");
-  const [primaryColor, setPrimaryColor] = useState<string>("blue");
-  const [secondaryColor, setSecondaryColor] = useState<string>("red"); // Initialize secondary color
-
-  // Load saved preferences on mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const savedPrimaryColor = localStorage.getItem("primaryColor");
-    const savedSecondaryColor = localStorage.getItem("secondaryColor");
-
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-
-    if (savedPrimaryColor) {
-      setPrimaryColor(savedPrimaryColor);
-    }
-
-    if (savedSecondaryColor) {
-      setSecondaryColor(savedSecondaryColor);
-    }
-  }, []);
+  const [theme, setTheme] = useState<string>(
+    localStorage.getItem("theme") || "light"
+  );
+  const [primaryColor, setPrimaryColor] = useState<string>(
+    localStorage.getItem("primaryColor") || "blue"
+  );
+  const [secondaryColor, setSecondaryColor] = useState<string>(
+    localStorage.getItem("secondaryColor") || "red"
+  );
 
   // Update CSS variables and save preferences whenever theme or colors change
   useEffect(() => {

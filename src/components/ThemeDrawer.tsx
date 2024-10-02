@@ -183,7 +183,14 @@ const getColor = (color: string): string => {
 
 const ThemeDrawer: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme, primaryColor, setPrimaryColor, secondaryColor, setSecondaryColor } = useTheme();
+  const {
+    theme,
+    setTheme,
+    primaryColor,
+    setPrimaryColor,
+    secondaryColor,
+    setSecondaryColor,
+  } = useTheme();
 
   return (
     <>
@@ -261,7 +268,10 @@ const ThemeDrawer: React.FC = () => {
                       <div className="space-y-6">
                         {/* Light Mode Section */}
                         <div>
-                          <h2 className="text-base font-medium text-gray-700 dark:text-gray-300">
+                          <h2 className="text-md font-semibold text-gray-700 dark:text-gray-300">
+                            Primary Color
+                          </h2>
+                          <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Light Mode
                           </h2>
                           <div className="mt-2 flex gap-2 flex-wrap">
@@ -286,7 +296,7 @@ const ThemeDrawer: React.FC = () => {
 
                         {/* Dark Mode Section */}
                         <div>
-                          <h2 className="text-base font-medium text-gray-700 dark:text-gray-300">
+                          <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             Dark Mode
                           </h2>
                           <div className="mt-2 flex flex-wrap gap-2">

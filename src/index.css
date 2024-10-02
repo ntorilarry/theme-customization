@@ -12,9 +12,9 @@
   --color-red: #ef4444;
   --color-green: #10b981;
   --color-yellow: #f59e0b;
-   --color-purple: #8b5cf6;
-   --color-pink: #ec4899;
-   --color-indigo: #6366f1;
+  --color-purple: #8b5cf6;
+  --color-pink: #ec4899;
+  --color-indigo: #6366f1;
   /* Add more colors as needed */
 
   --color-primary: var(--color-blue);

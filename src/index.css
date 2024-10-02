@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins";
+}
+
+/* Define primary color variables */
+:root {
+  --color-blue: #3b82f6;
+  --color-red: #ef4444;
+  --color-green: #10b981;
+  --color-yellow: #f59e0b;
+   --color-purple: #8b5cf6;
+   --color-pink: #ec4899;
+   --color-indigo: #6366f1;
+  /* Add more colors as needed */
+
+  --color-primary: var(--color-blue);
+  --color-secondary: var(--color-red);
+  /* Default secondary color */
+}
+
+/* Define dark mode variables */
+.dark {
+  --color-primary: var(--color-blue);
+  --color-secondary: var(--color-red);
+  /* Adjust if needed for dark mode */
+  /* Define other variables for dark mode if necessary */
+}

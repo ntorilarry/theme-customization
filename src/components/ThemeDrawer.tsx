@@ -13,16 +13,15 @@ const colors = ["blue", "red", "green", "yellow", "purple", "pink", "indigo"]; /
 
 const getColor = (color: string): string => {
   const colorMap: { [key: string]: string } = {
-    blue: "#3b82f6",
-    red: "#ef4444",
-    green: "#10b981",
-    yellow: "#f59e0b",
-    purple: "#8b5cf6",
-    pink: "#ec4899",
-    indigo: "#6366f1",
-    // Add more colors as needed
+    blue: "bg-blue-400",
+    red: "bg-red-400",
+    green: "bg-green-400",
+    yellow: "bg-yellow-400",
+    purple: "bg-purple-400",
+    pink: "bg-pink-400",
+    indigo: "bg-indigo-400",
   };
-  return colorMap[color] || "#3b82f6";
+  return colorMap[color] || "bg-blue-400";
 };
 
 const ThemeDrawer: React.FC = () => {
@@ -126,8 +125,7 @@ const ThemeDrawer: React.FC = () => {
                                   primaryColor === col
                                     ? "border-gray-900"
                                     : "border-transparent"
-                                } hover:border-gray-300`}
-                                style={{ backgroundColor: getColor(col) }}
+                                } hover:border-gray-300 ${getColor(col)}`}
                                 onClick={() => {
                                   setTheme("light");
                                   setPrimaryColor(col);
@@ -151,8 +149,7 @@ const ThemeDrawer: React.FC = () => {
                                   primaryColor === col
                                     ? "border-gray-900"
                                     : "border-transparent"
-                                } hover:border-gray-300`}
-                                style={{ backgroundColor: getColor(col) }}
+                                } hover:border-gray-300 ${getColor(col)}`}
                                 onClick={() => {
                                   setTheme("dark");
                                   setPrimaryColor(col);
@@ -176,8 +173,7 @@ const ThemeDrawer: React.FC = () => {
                                   secondaryColor === col
                                     ? "border-gray-900"
                                     : "border-transparent"
-                                } hover:border-gray-300`}
-                                style={{ backgroundColor: getColor(col) }}
+                                } hover:border-gray-300 ${getColor(col)}`}
                                 onClick={() => {
                                   setSecondaryColor(col);
                                 }}

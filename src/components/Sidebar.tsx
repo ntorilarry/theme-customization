@@ -92,7 +92,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, collapsed, setCollapsed }) => {
                                 }
                               >
                                 <item.icon
-                                  className="h-6 w-6 shrink-0 text-primary"
+                                  className="h-6 w-6 shrink-0 text-primary/50"
                                   aria-hidden="true"
                                 />
                                 {item.name}

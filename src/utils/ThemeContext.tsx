@@ -1,4 +1,3 @@
-// src/contexts/ThemeContext.tsx
 import React, {
   createContext,
   useState,
@@ -21,7 +20,7 @@ const defaultContext: ThemeContextType = {
   setTheme: () => {},
   primaryColor: "blue",
   setPrimaryColor: () => {},
-  secondaryColor: "red", // Default secondary color
+  secondaryColor: "red",
   setSecondaryColor: () => {},
 };
 
@@ -35,38 +34,27 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>(
     localStorage.getItem("theme") || "light"
   );
-  const [primaryColor, setPrimaryColor] = useState<string>(
-    localStorage.getItem("primaryColor") || "blue"
-  );
-  const [secondaryColor, setSecondaryColor] = useState<string>(
-    localStorage.getItem("secondaryColor") || "red"
-  );
+  const [primaryColor, setPrimaryColor] = useState<string>("blue");
+  const [secondaryColor, setSecondaryColor] = useState<string>("red");
 
-  // Update CSS variables and save preferences whenever theme or colors change
   useEffect(() => {
-    const root = window.document.documentElement;
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-    // Handle dark mode
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--color-primary",
+      `var(--color-${primaryColor})`
+    );
+  }, [primaryColor]);
 
-    // Handle primary color
-    root.style.setProperty("--color-primary", `var(--color-${primaryColor})`);
-
-    // Handle secondary color
-    root.style.setProperty(
+  useEffect(() => {
+    document.documentElement.style.setProperty(
       "--color-secondary",
       `var(--color-${secondaryColor})`
     );
-
-    // Save to localStorage
-    localStorage.setItem("theme", theme);
-    localStorage.setItem("primaryColor", primaryColor);
-    localStorage.setItem("secondaryColor", secondaryColor);
-  }, [theme, primaryColor, secondaryColor]);
+  }, [secondaryColor]);
 
   return (
     <ThemeContext.Provider
@@ -84,13 +72,5 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 };
 
+export const useTheme = () => useContext(ThemeContext);
 export default ThemeProvider;
-
-// Custom Hook
-export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
